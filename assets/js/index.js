@@ -34,7 +34,7 @@ let recipes = [
     recipeName: "rice",
     recipeImage: "../assets/images/strawberry-cake.jpg",
     recipeIngredients: [
-      "400g graham crackers",
+      "2 cups of rice",
       "150g unsalted butters, melted",
       "300g marshmallows",
     ],
@@ -58,26 +58,61 @@ function displayRecipes() {
     let recipeCard = document.createElement("div");
     recipeCard.classList.add("card");
     recipeCard.innerHTML = `
-            <img src="${recipe.recipeImage}" clStrawberry Cream Cheesecakeass="card-img-top"
-                    alt="recipe-image">
-            <div class="card-body">
-                <h5 class="card-title">${recipe.recipeName}</h5>
-                <a href="/detail-recipe.html/" class="btn btn-primary">Read More</a>
-            </div>
-        `;
+      <img src="${recipe.recipeImage}" clStrawberry Cream Cheesecakeass="card-img-top"
+              alt="${recipe.recipeName}">
+      <div class="card-body">
+        <h5 class="card-title">${recipe.recipeName}</h5>
+        <button>Read More</button>
+      </div>
+    `;
 
     function selectRecipe() {
       function openModal() {
         let recipeModalInfo = document.querySelector(".modal-info");
         recipeDetailModal.style.display = "block";
-        recipeModalInfo.innerHTML = `
-          <div class="image-container">
-            <img src="${recipe.recipeImage}" />
-          </div>
-          <div class="recipe-information">
-            <h5>${recipe.recipeName}</h5>
-          </div>
+        let recipeDetails = "";
+        recipeDetails += `
+            <div class="image-container">
+              <img src="${recipe.recipeImage}" />
+            </div>
+            <div class="recipe-information">
+              <h5>${recipe.recipeName}</h5>
+              <div class="ingredients-section">
+                <h2>Ingredients</h2>
+                <ul>
+            `;
+        recipe.recipeIngredients.forEach((ingredient) => {
+          recipeDetails += `
+                  <li>${ingredient}</li>
+          `;
+        });
+
+        recipeDetails += ` 
+                </ul>
+              </div>
+              <div class="preparation-section">
+               <h2>Preparation Instruction</h2>
+               <ol>
         `;
+        recipe.recipePreparation.forEach((preparation) => {
+          recipeDetails += `<li>${preparation}</li>`;
+        });
+
+        recipeDetails += `
+               </ol>
+              </div>
+            </div>
+        `;
+
+        recipeDetails += `
+            <div class="modify-buttons" id="modify-buttons">
+              <button type="btn button" class="delete-button" id="delete-button">Delete</button>&nbsp;
+              <button type="btn button" class="edit-button" data-bs-toggle="modal"
+                  data-bs-target="#updateRecipeForm" id="edit-button">Edit</button>
+            </div>
+        `;
+
+        recipeModalInfo.innerHTML = recipeDetails;
       }
 
       function closeModal() {

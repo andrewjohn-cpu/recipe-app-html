@@ -12,14 +12,41 @@
 </head>
 
 <body>
+    <!-- top navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <!-- add recipe Button trigger modal -->
+                        <button type="button" class="btn add-recipe-button" data-bs-toggle="modal"
+                            data-bs-target="#addRecipeForm">
+                            Add Recipe
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- logo section -->
     <div class="logo-section">
         <img src="assets/images/recipe.jpg" alt="recipe-logo" />
         <span>Recipe App</span>
     </div>
+
+    <!-- search recipe setion -->
     <div class="search-container">
         <input type="text" placeholder="Search Your Recipe" />
     </div>
+
     <div class="recipe-section">
+        <!-- display all recipes section -->
         <h2 id="recipe-section-title">Recipe of the week</h2>
         <div class="recipe-display-container" id="recipe-display-container">
             <!-- <div class="recipe-card">
@@ -32,57 +59,91 @@
                     alt="recipe-image">
                 <div class="card-body">
                     <h5 class="card-title">Strawberry Cream Cheesecake</h5>
-                    <a href="/detail-recipe.html" class="btn btn-primary">Read More</a>
+                    <button>Read More</button>
                 </div>
             </div> -->
         </div>
+    </div>
 
-        <!-- recipe detail modal -->
-        <div id="myModal" class="recipeInfoModal">
-            <div class="recipeModal-content">
-                <span class="close" id="modal-close">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </span>
-                <div class="modal-info" id="modal-info">
-                    <div class="image-container">
-                        <img src="assets/images/strawberry-cake.jpg" />
+    <!-- recipe detail modal -->
+    <div id="myModal" class="recipeInfoModal">
+        <div class="recipeModal-content">
+            <span class="close" id="modal-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </span>
+            <div class="modal-info" id="modal-info">
+                <div class="image-container">
+                    <img src="assets/images/strawberry-cake.jpg" />
+                </div>
+                <div class="recipe-information">
+                    <h5>Strawberry Cake</h5>
+                    <div class="ingredients-section">
+                        <h2>Ingredients</h2>
+                        <ul>
+                            <li>400g graham crackers</li>
+                            <li>150g unsalted butters, melted</li>
+                            <li>300g marshmallows</li>
+                        </ul>
                     </div>
-                    <div class="recipe-information">
-                        <h5>Strawberry Cake</h5>
-                        <div class="ingredients-section">
-                            <h2>Ingredients</h2>
-                            <ul>
-                                <li>400g graham crackers</li>
-                                <li>150g unsalted butters, melted</li>
-                                <li>300g marshmallows</li>
-                            </ul>
+                    <div class="preparation-section">
+                        <h2>Preparation Instruction</h2>
+                        <ol>
+                            <li>To prepare crust add graham crackers to a food processor and process until you reach
+                                fine
+                                crumbs.
+                                Add melted butter and pulse 3-4 times to coat crumbs with butter.
+                            </li>
+                            <li>To prepare crust add graham crackers to a food processor and process until you reach
+                                fine
+                                crumbs.
+                                Add melted butter and pulse 3-4 times to coat crumbs with butter.
+                            </li>
+                            <li>To prepare crust add graham crackers to a food processor and process until you reach
+                                fine
+                                crumbs.
+                                Add melted butter and pulse 3-4 times to coat crumbs with butter.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="modify-buttons" id="modify-buttons">
+                    <button type="btn button" class="delete-button" id="delete-button">Delete</button>&nbsp;
+                    <button type="btn button" class="edit-button" data-bs-toggle="modal"
+                        data-bs-target="#updateRecipeForm" id="edit-button">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addRecipeForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Recipe Form</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="recipe-form">
+                        <div class="field-group">
+                            <label for="title">Recipe Title</label>
+                            <input type="text" id="recipeName" name="recipeName" placeholder="Enter recipe name"
+                                required>
                         </div>
-                        <div class="preparation-section">
-                            <h2>Preparation Instruction</h2>
-                            <ol>
-                                <li>To prepare crust add graham crackers to a food processor and process until you reach
-                                    fine
-                                    crumbs.
-                                    Add melted butter and pulse 3-4 times to coat crumbs with butter.
-                                </li>
-                                <li>To prepare crust add graham crackers to a food processor and process until you reach
-                                    fine
-                                    crumbs.
-                                    Add melted butter and pulse 3-4 times to coat crumbs with butter.
-                                </li>
-                                <li>To prepare crust add graham crackers to a food processor and process until you reach
-                                    fine
-                                    crumbs.
-                                    Add melted butter and pulse 3-4 times to coat crumbs with butter.
-                                </li>
-                            </ol>
+                        <div class="field-group ingredients">
+                            <label>Recipe Ingredients</label>
+                            <input type="text" id="ingredient" placeholder="Enter an ingredient">
+                            <button type="button" id="recipeIngredient">Add Ingredient</button>
+                            <ul id="ingredient-list"></ul>
                         </div>
-                    </div>
-                    <div class="modify-buttons" id="modify-buttons">
-                        <button type="btn button" class="delete-button" id="delete-button">Delete</button>&nbsp;
-                        <button type="btn button" class="edit-button" data-bs-toggle="modal"
-                            data-bs-target="#updateRecipeForm" id="edit-button">Edit</button>
-                    </div>
+                        <div class="field-group steps">
+                            <label>Recipe Preparation Instruction</label>
+                            <textarea id="step" placeholder="Enter a preparation step"></textarea>
+                            <button type="button" id="add-step">Add Instruction</button>
+                            <ol id="instruction-list"></ol>
+                        </div>
+                        <button type="submit">Save Recipe</button>
+                    </form>
                 </div>
             </div>
         </div>

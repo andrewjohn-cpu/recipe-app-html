@@ -115,6 +115,7 @@
         </div>
     </div>
 
+    <!-- add recipe modal form  -->
     <div class="modal fade" id="addRecipeForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -132,15 +133,15 @@
                         </div>
                         <div class="field-group ingredients">
                             <label>Recipe Ingredients</label>
-                            <input type="text" id="ingredient" placeholder="Enter an ingredient">
-                            <button type="button" id="recipeIngredient">Add Ingredient</button>
+                            <input type="text" id="recipeIngredient" placeholder="Enter an ingredient">
                             <ul id="ingredient-list"></ul>
+                            <button type="button" id="recipeIngredientButton">Add Ingredient</button>
                         </div>
                         <div class="field-group steps">
                             <label>Recipe Preparation Instruction</label>
-                            <textarea id="step" placeholder="Enter a preparation step"></textarea>
-                            <button type="button" id="add-step">Add Instruction</button>
+                            <textarea id="recipeInstruction" placeholder="Enter a preparation step"></textarea>
                             <ol id="instruction-list"></ol>
+                            <button type="button" id="recipeInstructionButton">Add Instruction</button>
                         </div>
                         <button type="submit">Save Recipe</button>
                     </form>
